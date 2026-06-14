@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* ── Typography tokens ────────────────────────────────── */
+:root {
+  --font-heading: var(--font-serif-dev), "Noto Serif", Georgia, serif;
+  --font-body: var(--font-mukta), "Noto Sans Devanagari", Arial, sans-serif;
+  --red: #C41E3A;
+  --red-dark: #a01830;
+  --ink: #1a1814;
+  --ink-2: #3d3c38;
+  --ink-3: #6b6962;
+  --border: #e2e0da;
+  --bg: #f6f5f0;
+  --bg-card: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headlines use serif Devanagari */
+h1, h2, h3, h4, h5, h6,
+.headline, .news-title {
+  font-family: var(--font-heading);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ── Scrollbar utilities ────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Line clamp ─────────────────────────────────────── */
+.line-clamp-1 { display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden; }
+.line-clamp-2 { display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+.line-clamp-3 { display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden; }
+
+/* ── Breaking ticker marquee ────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── GIF-style ad animations ────────────────────────── */
+@keyframes adSlide {
+  0%,100%  { opacity:1; transform:translateY(0); }
+  45%      { opacity:1; transform:translateY(0); }
+  50%      { opacity:0; transform:translateY(-8px); }
+  55%      { opacity:1; transform:translateY(0); }
+}
+
+@keyframes adPulse {
+  0%,100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+@keyframes adBlink {
+  0%,90%,100% { opacity:1; }
+  95%         { opacity:0.4; }
+}
+
+@keyframes adShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes adBounce {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.04); }
+}
+
+.ad-gif-pulse {
+  background-size: 200% 200%;
+  animation: adPulse 3s ease infinite;
+}
+
+.ad-cta-blink {
+  animation: adBlink 2.5s ease infinite;
+}
+
+.ad-headline-slide {
+  animation: adSlide 4s ease infinite;
+}
+
+.ad-bounce {
+  animation: adBounce 2s ease infinite;
+}
+
+.ad-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  animation: adShimmer 2.5s ease infinite;
+}
+
+/* ── Section border accent ──────────────────────────── */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.section-head-accent {
+  width: 4px;
+  height: 20px;
+  background: var(--red);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Bordered card ──────────────────────────────────── */
+.news-card {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.news-card:hover {
+  border-color: #c9c8c0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ── Category badge colours ─────────────────────────── */
+.cat-राजनीति, .cat-Politics     { background:#fef2f2; color:#b91c1c; }
+.cat-अर्थतन्त्र, .cat-Economy   { background:#f0fdf4; color:#15803d; }
+.cat-खेलकुद, .cat-Sports        { background:#fffbeb; color:#b45309; }
+.cat-प्रविधि, .cat-Technology   { background:#eff6ff; color:#1d4ed8; }
+.cat-स्वास्थ्य, .cat-Health     { background:#fff1f2; color:#be123c; }
+.cat-विश्व, .cat-World          { background:#faf5ff; color:#7e22ce; }
+.cat-स्थानीय, .cat-Local        { background:#f0fdfa; color:#0f766e; }
+.cat-मनोरञ्जन, .cat-Entertainment{ background:#fff7ed; color:#c2410c; }
+.cat-शिक्षा, .cat-Education     { background:#ecfeff; color:#0e7490; }
+.cat-वातावरण, .cat-Environment  { background:#f7fee7; color:#4d7c0f; }
+.cat-व्यवसाय, .cat-Business     { background:#fefce8; color:#854d0e; }
