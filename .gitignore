@@ -43,6 +43,9 @@ crawler/*.log
 # ─── Vercel ───────────────────────────────────────────────────
 .vercel/
 
+# ─── MCP config (contains project refs / credentials) ─────────
+.mcp.json
+
 # ─── TypeScript ───────────────────────────────────────────────
 *.tsbuildinfo
 next-env.d.ts
